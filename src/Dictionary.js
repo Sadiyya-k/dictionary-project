@@ -15,7 +15,7 @@ export default function Dictionary(props) {
   }
 
   function handleshecodesResponse(response) {
-    setPhotos(response.data.photo);
+    setPhotos(response.data.photos);
   }
 
   function search() {
@@ -55,7 +55,7 @@ export default function Dictionary(props) {
             />
           </form>
           <div className="hint">
-            Suggested words: sunrise, forest, yoga, planet...{" "}
+            Suggested words: sunrise, forest, yoga, planet ...{" "}
           </div>
         </section>
         <Results results={results} />
