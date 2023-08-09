@@ -9,7 +9,12 @@ export default function App() {
         <main>
           <Dictionary defaultKeyword="Welcome" />
         </main>
-        <footer className="App-footer">Coded by Sadiyya Khan</footer>
+        <footer className="App-footer">
+          Coded by Sadiyya Khan, open-sourced on{" "}
+          <a href="https://github.com/Sadiyya-k/dictionary-project.git">
+            Github
+          </a>
+        </footer>
       </div>
     </div>
   );
