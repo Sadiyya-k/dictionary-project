@@ -6,7 +6,7 @@ import "./Dictionary.css";
 
 export default function Dictionary(props) {
   let [keyword, setKeyword] = useState(props.defaultKeyword);
-  let [results, setResults] = useState({});
+  let [results, setResults] = useState(null);
   let [loaded, setLoaded] = useState(false);
   let [photos, setPhotos] = useState(null);
 
@@ -16,6 +16,7 @@ export default function Dictionary(props) {
 
   function handleDictionaryResponse(response) {
     setResults(response.data);
+    setLoaded(true);
   }
 
   function search() {
@@ -40,7 +41,6 @@ export default function Dictionary(props) {
   }
 
   function load() {
-    setLoaded(true);
     search();
   }
 
@@ -61,7 +61,7 @@ export default function Dictionary(props) {
             Suggested words: sunrise, forest, yoga, planet ...{" "}
           </div>
         </section>
-        <Results results={results} />
+        <Results definition={results} />
         <Photos photos={photos} />
       </div>
     );
