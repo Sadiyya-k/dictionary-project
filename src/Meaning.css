@@ -4,14 +4,13 @@
 }
 
 .Meaning .definition {
-  font-size: 19px;
-  margin-left: 30px;
+  font-size: 16px;
+  color: #d8e6f3;
 }
 
 .Meaning .example {
-  color: #70757a;
+  color: #a2a5a8;
   font-style: italic;
   margin-top: 10px;
-  margin-left: 30px;
   font-size: 14px;
 }

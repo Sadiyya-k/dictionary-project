@@ -1,23 +1,36 @@
 body {
-  background: #f9f8fe;
+  background: #5465ff;
 }
 
 a {
-  color: #9670f4;
+  color: #0c1330;
+  font-weight: bold;
+  text-decoration: none;
 }
 
 .App {
   max-width: 800px;
-  margin: 0 auto;
+  margin: 15px auto;
+  color: #fffdf6;
 }
 
 .App-header {
-  margin: 20px 0px;
+  margin: 0 auto;
+  padding: -5px;
   text-align: center;
   font-size: 55px;
+  background-color: rgba(28, 39, 90, 0.6);
+  border-radius: 10px;
+  width: 50%;
 }
 
 .App-footer {
   text-align: center;
-  margin: 30px 0;
+  letter-spacing: 0.2px;
+  font-size: 13px;
+  margin: -5px auto;
+  background-color: rgba(28, 39, 90, 0.5);
+  border-radius: 10px;
+  width: 50%;
+  padding: 5px;
 }

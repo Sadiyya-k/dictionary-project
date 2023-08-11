@@ -1,12 +1,17 @@
 .Synonyms {
   padding: 0;
   margin-top: 3px;
-  margin-left: 30px;
-  letter-spacing: 0.5px;
+  letter-spacing: 1px;
+  margin-left: -30px;
 }
 
 .Synonyms li {
   font-size: 13px;
   display: inline-block;
   padding-right: 10px;
+  color: #d8e6f3;
+}
+
+.Synonyms strong {
+  font-size: 13px;
 }
