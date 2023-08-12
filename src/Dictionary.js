@@ -9,26 +9,35 @@ export default function Dictionary(props) {
   let [results, setResults] = useState(null);
   let [loaded, setLoaded] = useState(false);
   let [photos, setPhotos] = useState(null);
+  let [error, setError] = useState(false);
 
   function handleImageResponse(response) {
     setPhotos(response.data.photos);
   }
 
   function handleDictionaryResponse(response) {
-    setResults(response.data);
+    if (response.data.status === "not_found") {
+      setError(true);
+      return;
+    }
+    setError(false);
     setLoaded(true);
+    setResults(response.data);
   }
 
   function search() {
     let apiKey = "fbdaa6o7f8db80d139ftfd763b2b9e74";
     let apiUrl = `https://api.shecodes.io/dictionary/v1/define?word=${keyword}&key=${apiKey}`;
-
-    axios.get(apiUrl).then(handleDictionaryResponse);
+    axios.get(apiUrl).then(handleDictionaryResponse).catch(handleError);
 
     let imageApiKey = "fbdaa6o7f8db80d139ftfd763b2b9e74";
     let imageApiUrl = `https://api.shecodes.io/images/v1/search?query=${keyword}&key=${imageApiKey}`;
 
     axios.get(imageApiUrl).then(handleImageResponse);
+  }
+
+  function handleError() {
+    setError(true);
   }
 
   function handleSubmit(event) {
@@ -44,7 +53,7 @@ export default function Dictionary(props) {
     search();
   }
 
-  if (loaded) {
+  if (loaded && !error) {
     return (
       <div className="Dictionary">
         <section>
@@ -57,12 +66,28 @@ export default function Dictionary(props) {
               defaultValue={props.defaultKeyword}
             />
           </form>
-          <div className="hint">
-            Suggested words: sunrise, forest, yoga, planet ...{" "}
-          </div>
+          <div className="hint">i.e. sunrise, forest, yoga, planet ... </div>
         </section>
         <Results definition={results} />
         <Photos photos={photos} />
+      </div>
+    );
+  } else if (loaded && error) {
+    return (
+      <div className="Dictionary">
+        <section>
+          <h1>What word do you want to look up?</h1>
+          <form onSubmit={handleSubmit}>
+            <input
+              type="search"
+              onChange={handleKeywordChange}
+              autoFocus={true}
+              defaultValue={props.defaultKeyword}
+            />
+          </form>
+          <div className="hint">i.e. sunrise, forest, yoga, planet ... </div>
+        </section>
+        <h1>Ooops, word not found</h1>
       </div>
     );
   } else {
