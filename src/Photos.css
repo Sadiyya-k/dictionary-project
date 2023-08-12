@@ -1,6 +1,7 @@
 .Photos img {
   border-radius: 10px;
   border: 2px solid rgba(28, 39, 90, 0.9);
-  margin-bottom: 20px;
-  padding: 0;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin-bottom: 15px;
 }
